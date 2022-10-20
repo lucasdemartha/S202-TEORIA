@@ -1,0 +1,57 @@
+//PESSOAS
+
+Create(p:Pessoa{nome:"Paulo Henrique Ribeiro",idade:80,sexo:'M'}) SET p:Corretor;
+Create(p:Pessoa{nome:"Maria Francisca Ribeiro",idade:76,sexo:'F'}) SET p:Professor;
+
+
+Create(p:Pessoa{nome:"Marcia Ribeiro",idade:56,sexo:'F'}) SET p:Professor;
+Create(p:Pessoa{nome:"Paulo Ribeiro",idade:54,sexo:'M'}) SET p:Rural;
+Create(p:Pessoa{nome:"Vania Ribeiro",idade:52,sexo:'F'}) SET p:Professor;
+Create(p:Pessoa{nome:"Adriana Ribeiro",idade:50,sexo:'F'}) SET p:Professor;
+Create(p:Pessoa{nome:"Jose Ribeiro",idade:48,sexo:'M'}) SET p:Eletricista;
+
+
+Create(p:Pessoa{nome:"Leonardo Ribeiro",idade:29,sexo:'M'}) SET p:Engenheiro;
+Create(p:Pessoa{nome:"Lucas Ribeiro",idade:23,sexo:'M'}) SET p:Estagiario;
+Create(p:Pessoa{nome:"Luiza Ribeiro",idade:21,sexo:'F'}) SET p:Estagiario;
+Create(p:Pessoa{nome:"Breno Ribeiro",idade:18,sexo:'M'}) SET p:Rural;
+Create(p:Pessoa{nome:"Alana Ribeiro",idade:15,sexo:'F'}) SET p:Criança;
+Create(p:Pessoa{nome:"Harady Ribeiro",idade:7,sexo:'F'}) SET p:Criança;
+
+
+Create(p:Pessoa{nome:"Ronaldo Martha",idade:57,sexo:'M'}) SET p:Vendedor;
+Create(p:Pessoa{nome:"Vanessa Ribeiro",idade:54,sexo:'F'}) SET p:Rural;
+Create(p:Pessoa{nome:"Romilsa Silva",idade:50,sexo:'F'}) SET p:Domestica;
+Create(p:Pessoa{nome:"Tatiana Volpato",idade:26,sexo:'F'}) SET p:Engenheira;
+
+//RELACIONAMENTOS
+
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Maria Francisca Ribeiro'}) CREATE (p1)-[:CASADO_COM{desde:'1965'}]->(p2);
+MATCH(p1:Pessoa{nome:'Ronaldo Martha'}),(p2:Pessoa{nome:'Vania Ribeiro'}) CREATE (p1)-[:CASADO_COM{desde:'1992'}]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Ribeiro'}),(p2:Pessoa{nome:'Vanessa Ribeiro'}) CREATE (p1)-[:CASADO_COM{desde:'2000'}]->(p2);
+MATCH(p1:Pessoa{nome:'Leonardo Ribeiro'}),(p2:Pessoa{nome:'Tatiana Volpato'}) CREATE (p1)-[:CASADO_COM{desde:'2020'}]->(p2);
+
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Marcia Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Maria Francisca Ribeiro'}),(p2:Pessoa{nome:'Marcia Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Paulo Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Maria Francisca Ribeiro'}),(p2:Pessoa{nome:'Paulo Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Vania Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Maria Francisca Ribeiro'}),(p2:Pessoa{nome:'Vania Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Adriana Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Maria Francisca Ribeiro'}),(p2:Pessoa{nome:'Adriana Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Henrique Ribeiro'}),(p2:Pessoa{nome:'Jose Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Maria Francisca Ribeiro'}),(p2:Pessoa{nome:'Jose Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+
+MATCH(p1:Pessoa{nome:'Marcia Ribeiro'}),(p2:Pessoa{nome:'Leonardo Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Ronaldo Martha'}),(p2:Pessoa{nome:'Lucas Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Vania Ribeiro'}),(p2:Pessoa{nome:'Lucas Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Ronaldo Martha'}),(p2:Pessoa{nome:'Luiza Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Vania Ribeiro'}),(p2:Pessoa{nome:'Luiza Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Ribeiro'}),(p2:Pessoa{nome:'Breno Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Vanessa Ribeiro'}),(p2:Pessoa{nome:'Breno Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Ribeiro'}),(p2:Pessoa{nome:'Alana Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Vanessa Ribeiro'}),(p2:Pessoa{nome:'Alana Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Paulo Ribeiro'}),(p2:Pessoa{nome:'Harady Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+MATCH(p1:Pessoa{nome:'Vanessa Ribeiro'}),(p2:Pessoa{nome:'Harady Ribeiro'}) CREATE (p1)-[:PAI_DE]->(p2);
+
+MATCH(p1:Pessoa{nome:'Jose Ribeiro'}),(p2:Pessoa{nome:'Romilsa Silva'}) CREATE (p1)-[:NAMORA_COM{desde:'2020'}]->(p2);
