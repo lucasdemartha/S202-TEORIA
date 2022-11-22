@@ -1,0 +1,17 @@
+1) INSERT INTO sensor (id, ano, mes, dia, hora, leitura, local, modelo)
+VALUES (25, 2021, 5, 10, '19:00', 37, 'SRS', 'TexasTemp1');
+
+2) INSERT INTO sensor (id, ano, mes, dia, hora, leitura)
+VALUES (25, 2021, 5, 11, '18:30', 36);
+
+3) UPDATE sensor
+SET local = 'PA', modelo = 'BuffaloMoist1'
+WHERE id = 25 and ano = 2021 and mes = 5 and dia = 11 and hora = '18:30';
+
+4) SELECT modelo, dia, hora, leitura
+FROM sensor
+WHERE id = 25 and ano = 2021 and mes = 5 and dia IN(10,11);
+
+5) SELECT *
+FROM sensor
+WHERE id = 25 and ano = 2021 and mes = 5 and dia = 10 and hora >= '18:30';
